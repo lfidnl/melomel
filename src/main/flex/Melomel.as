@@ -227,6 +227,14 @@ public class Melomel extends EventDispatcher
 		bridge.disconnect();
 	}
 
+  /**
+   *  Reconnect to exteral interface. Can be used in browser through Javascript
+   */
+  static public function reconnectMelomel():void
+  {
+    disconnect();
+    connect(bridge.host, bridge.port);
+  }
 	//---------------------------------
 	//	Busy state
 	//---------------------------------

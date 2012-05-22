@@ -84,13 +84,14 @@ public class MXMLMelomel implements IMXMLObject
 		});
 
     // Let reconnect Melomel to external interface with JavaScript in browser
-    ExternalInterface.addCallback("reconnectMelomel", reconnectMelomel);
+    try
+    {
+      ExternalInterface.addCallback("reconnectMelomel", Melomel.reconnectMelomel);
+    }
+    catch(error:Error)
+    {
+			if (Melomel.debug) trace("Cannot add callback for reconnectMelomel method. May be Melomel ran for non-HTML application. Error message: " + error.message);
+    }
 	}
-
-  public function reconnectMelomel():void
-  {
-    Melomel.disconnect();
-    Melomel.connect(host, port);
-  }
 }
 }
