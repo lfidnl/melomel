@@ -20,6 +20,8 @@ import mx.events.FlexEvent;
 
 import flash.events.EventDispatcher;
 
+import flash.external.ExternalInterface;
+
 /**
  *	This class allows you to automatically start up a Melomel bridge through
  *	MXML like this:
@@ -80,6 +82,15 @@ public class MXMLMelomel implements IMXMLObject
 			Melomel.debug = debug;
 			Melomel.connect(host, port);
 		});
+
+    // Let reconnect Melomel to external interface with JavaScript in browser
+    ExternalInterface.addCallback("reconnectMelomel", reconnectMelomel);
 	}
+
+  public function reconnectMelomel():void
+  {
+    Melomel.disconnect();
+    Melomel.connect(host, port);
+  }
 }
 }

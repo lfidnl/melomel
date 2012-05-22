@@ -219,7 +219,14 @@ public class Melomel extends EventDispatcher
 		bridge.connect();
 	}
 	
-	
+	/**
+	 *	Attempts to disconnect the bridge from the external interface.
+	 */
+	static public function disconnect(host:String="localhost", port:int=10101):void
+	{
+		bridge.disconnect();
+	}
+
 	//---------------------------------
 	//	Busy state
 	//---------------------------------
